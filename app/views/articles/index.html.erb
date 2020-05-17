@@ -1,18 +1,26 @@
-<h1>Articles listing page</h1>
+<%
+=begin%>
+ <% @articles.each do |article| %>
+<tr>
+  <td><%= article.title %></td>
+  <td><%= article.description %></td>
+  <td><%= link_to 'Show', article_path(article) %></td>
+  <td><%= link_to 'Edit', edit_article_path(article) %></td>
+  <td><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
+<% end %> 
+<%
+=end%>
 
-<table>
-  <thead>
-    <tr>Title</tr>
-    <tr>Description</tr>
-    <tr>Actions</tr>
-  </thead>
-  
-  <tbody>
-    <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.description %></td>
-      <td>Placeholder</td>
-    <% end %>
-  </tbody>
-</table>
+<div class="article">
+  <% @articles.each do |article| %>
+    <div class="article-block">
+      <%= link_to article_path(article) do %>
+        <img src=<%= article.img_url %> alt="none" /> 
+        <div class="article-block-info">
+          <div class="article-block-info__title"><%= article.title %></div>
+          <div class="article-block-info__description"><%= article.description %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

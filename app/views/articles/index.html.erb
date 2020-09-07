@@ -18,6 +18,7 @@
         <img src=<%= article.img_url %> alt="none" /> 
         <div class="article-block-info">
           <div class="article-block-info__title"><%= article.title %></div>
+          <div class="article-block-info__author"><%= article.user.username if article.user %></div>
           <div class="article-block-info__description"><%= article.description %></div>
         </div>
       <% end %>
